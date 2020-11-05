@@ -1,0 +1,97 @@
+﻿@page
+@model ToDoList.UI.Pages.Employees.IndexModel
+@{
+    ViewData["Title"] = "List Of Employees";
+
+}
+
+<h2 class="display-4 text-nowrap">
+    Employees Information
+</h2>
+<hr />
+<div class="row">
+
+    <div class="ml-auto">
+        <div class="col-8 text-nowrap">
+            <a asp-page="#" class="btn btn-outline-primary mr-1 p-4">
+                Create new record
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+
+@if (Model.Employees.Any())
+{
+    <div class="table-responsive mt-2">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td>FullName</td>
+                    <td>Email</td>
+                    <td>Gender</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var emp in Model.Employees)
+                {
+                    <tr>
+                        <td>
+                            @emp.FirstName  @emp.LastName
+                        </td>
+                        <td>
+                            @emp.Email
+                        </td>
+                        <td>
+                            @emp.Gender
+                        </td>
+                        <td>
+                           
+                        </td>
+                        <td>
+                            <a asp-page="Details" class="btn btn-outline-primary mb-2" asp-route-id="@emp.Id">Details</a>
+                            <a asp-page="Edit" class="btn btn-outline-primary mb-2" asp-route-id="@emp.Id">Edit</a>
+                            <a asp-page="Delete" class="btn btn-outline-danger mb-2" asp-route-id="@emp.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+
+    </div>
+
+
+
+}
+else
+{
+    <div class="card-deck">
+        <div class="card mt-2">
+            <div class="card-header">
+                <h2>
+                    No records yet to be display
+                </h2>
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">
+                    Click on the button below to create new record.
+                </h4>
+            </div>
+            <div class="card-footer">
+                <a asp-page="#" class="btn btn-outline-primary w-100 p-4">
+                    Create new record
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+

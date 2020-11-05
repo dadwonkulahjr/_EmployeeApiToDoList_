@@ -1,0 +1,49 @@
+﻿@page "{id:int}"
+@model ToDoList.UI.Pages.Employees.DetailsModel
+@{
+    ViewData["Title"] = "Employee Details";
+}
+
+<h2 class="display-4">
+    Employee Details
+</h2>
+
+<hr />
+
+<div class="row justify-content-center">
+    <div class="col-sm-6">
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h2 class="card-title">
+                        @Model.Employee.FirstName @Model.Employee.LastName
+                    </h2>
+                </div>
+                <img src="@Model.Employee.PhotoPath" class="card-img-top rounded-circle" asp-append-version="true">
+                <div class="card-body text-center">
+                    <h4 class="card-title">
+                        Email : @Model.Employee.Email
+                    </h4>
+                    <h4 class="card-title">
+                        Gender : @Model.Employee.Gender
+                    </h4>
+                    <h4 class="card-title">
+                        Department : @Model.Employee.Department.DepartmentName
+                    </h4>
+                    <h4 class="card-title">
+                        Email : @Model.Employee.Salary.Value.ToString("c")
+                    </h4>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-page="Index" class="btn btn-outline-secondary">Back</a>
+                    <a asp-page="Index" class="btn btn-outline-primary">Edit</a>
+                    <a asp-page="Index" class="btn btn-outline-danger">Delete</a>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
